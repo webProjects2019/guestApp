@@ -1,0 +1,16 @@
+<div id="home-page-container"></div>
+
+<div class="home-menu">
+  <div class="welcome-title">
+    Welcome to Guest Room
+  </div>
+  <div class="sub-welcome-title">
+    Check our Guest Rooms
+  </div>
+  <div class="rooms-container" *ngFor="let image of _homeImages">
+    <div class="room-container">
+      <div class="room-name">{{ image.name }}</div>
+      <div><img class="room-type-image" src="{{ image.src }}" /></div>
+    </div>
+  </div>
+</div>

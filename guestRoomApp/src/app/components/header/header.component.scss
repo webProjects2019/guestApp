@@ -1,0 +1,14 @@
+$primary-font:  Montserrat-Light;
+.log-controls {
+  height: 100%;
+  color: white;
+  position: relative;
+  z-index: 100;
+  float: right;
+  .sign-up,
+  .sign-in {
+    height: 100%;
+    font-family: $primary-font;
+    margin-right: 22px;
+  }
+}
