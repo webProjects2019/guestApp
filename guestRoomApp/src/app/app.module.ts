@@ -7,15 +7,19 @@ import { MatButtonModule, MatCheckboxModule } from "@angular/material";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { ReactiveFormsModule } from "@angular/forms";
 import {HttpClientModule}from '@angular/common/http'
-
+import {MatSelectModule} from '@angular/material/select';
 import "hammerjs";
+import {MatCardModule} from '@angular/material/card';
+ 
 import { HeaderComponent } from "./components/header/header.component";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import {MatInputModule} from '@angular/material/input';
-
 import { componentsRoutes } from "./app-routing.module";
+import { CreateComponent } from './components/create/create.component';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatPaginatorModule,MatProgressSpinnerModule} from '@angular/material';
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, componentsRoutes],
+  declarations: [AppComponent, HeaderComponent, componentsRoutes, CreateComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,7 +30,12 @@ import { componentsRoutes } from "./app-routing.module";
     MatButtonToggleModule,
     MatInputModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

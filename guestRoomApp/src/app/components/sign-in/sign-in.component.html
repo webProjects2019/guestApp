@@ -1,1 +1,36 @@
 <div id="sign-in-page-container"></div>
+<form class="sign-in-form" [formGroup]="form" (submit)="onSubmit()">
+  <mat-form-field class="email-form">
+    <input
+      matInput
+      placeholder="Email"
+      type="email"
+      formControlName="email"
+    />
+    <mat-error *ngIf="email.invalid">Email required</mat-error>
+    
+
+</mat-form-field>
+  <mat-form-field class="password-form">
+        <input
+          matInput
+          placeholder="Password"
+          type="password"
+          formControlName="password"
+        />
+        <mat-error *ngIf="password.invalid">Password is required</mat-error>
+
+      </mat-form-field>
+
+
+  <button mat-raised-button color="accent" type="submit">Login</button>
+</form>
+
+<!-- <div id="sign-in-page-container"></div>
+<div class="sign-in-form">
+    <form>  <mat-form-field class="example-full-width">
+            <input matInput placeholder="email" type="email" />
+            <mat-error *ngIf=""> </mat-error>
+          </mat-form-field></form>
+
+</div> -->

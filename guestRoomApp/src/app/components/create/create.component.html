@@ -1,0 +1,70 @@
+<div id="create-page-container"></div>
+<div class="form-container">
+    <form class="create-form" [formGroup]="form" (submit)="onSubmit()">
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="Room name"
+            type="text"
+            formControlName="roomName"
+          />
+          <mat-error *ngIf="">Room name required</mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <textarea
+            matInput
+            placeholder="Room description"
+            type="text"
+            formControlName="roomDescription"
+          >
+          </textarea>
+          <mat-error *ngIf="">Room description is required</mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input 
+            matInput
+            placeholder="Room price"
+            type="text"
+            formControlName="roomPrice"
+          />
+      
+          <mat-error *ngIf="">Room price is required</mat-error>
+        </mat-form-field>
+        <div>
+            <img [src]="imagePreview"*ngIf="imagePreview" class="image-container" />
+      
+          <button mat-stroked-button type="button" (click)="filePicker.click()">
+            Pick Image
+          </button>
+          <input type="file" #filePicker (change)="onImagePicked($event)" />
+        </div>
+       
+            <mat-form-field>
+                <mat-label>Number of beds</mat-label>
+                <select matNativeControl required formControlName="bedsAmount">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+      
+                </select>
+              </mat-form-field>
+            <mat-form-field>
+                <mat-label>Room bed type</mat-label>
+                <select matNativeControl required formControlName="roomBedType">
+                  <option value="King bed">King bed</option>
+                  <option value="Twin bed">Twin bed</option>
+                  <option value="Triple bed">Triple bed</option>
+                </select>
+              </mat-form-field>
+              <section>
+                  <label class="example-margin">Available:</label>
+                  <mat-radio-group formControlName="isRoomAvailable">
+                    <mat-radio-button  class="example-margin" value="yes">Yes</mat-radio-button>
+                    <mat-radio-button class="example-margin" value="no">No</mat-radio-button>
+                  </mat-radio-group>
+              </section>
+      
+        <button mat-raised-button color="accent" type="submit">Create room</button>
+      </form>
+      
+</div>

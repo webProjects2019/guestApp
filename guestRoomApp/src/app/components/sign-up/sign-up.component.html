@@ -6,6 +6,17 @@
   [@fadeInOnEnter]
   [@fadeOutOnLeave]
 >
+  <div>
+    <img
+      class="image-preview"
+      *ngIf="imagePreview && image.valid"
+      [src]="imagePreview"
+    />
+    <button mat-stroked-button type="button" (click)="filePicker.click()">
+      Pick Image
+    </button>
+    <input type="file" #filePicker (change)="onImagePicked($event)" />
+  </div>
   <mat-form-field>
     <input
       matInput
@@ -13,14 +24,32 @@
       color="accent"
       formControlName="_userName"
     />
-    <mat-error *ngIf="true">user name is required.</mat-error>
+
+    <mat-error *ngIf="username.errors && username.errors.required"
+      >user name is required.</mat-error
+    >
+    <mat-error *ngIf="username.errors && username.errors.cannotContainSpace"
+      >user name cannot contain space.</mat-error
+    >
+
+    <!-- <mat-error *ngIf="userName.errors.required">user name is required.</mat-error> -->
+    <mat-error *ngIf="username.errors && username.errors.minlength"
+      >user name should have minimum
+      {{ username.errors.minlength.requiredLength }} chars.</mat-error
+    >
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <input matInput placeholder="email" formControlName="_email" type="email" />
-    <mat-error *ngIf="form.get('_email').invalid||this.emailError">
-      {{ emailError }}
-  </mat-error>
+    <mat-error *ngIf="email.errors && email.errors.required">
+      email is required.
+    </mat-error>
+    <mat-error *ngIf="(email.errors)&&email.errors.emailExist"
+      >this email already exist.</mat-error
+    >
+    <span style="color:red" *ngIf="email.pending"
+      >check if email available...</span
+    >
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
@@ -30,11 +59,17 @@
       formControlName="_password"
       type="password"
     />
-    <mat-error>password is required.</mat-error>
+    <mat-error *ngIf="password.errors && password.errors.required"
+      >password is required.</mat-error
+    >
   </mat-form-field>
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="phone" formControlName="_phone" type="tel" />
-    <mat-error>phone is required.</mat-error>
+    <input matInput placeholder="phone" formControlName="_phone" />
+    <mat-error *ngIf="phone.errors && phone.errors.required"
+      >phone is required.</mat-error
+    >
+    <div *ngIf="form.errors">form error.</div>
   </mat-form-field>
+
   <button mat-raised-button color="accent" type="submit">Sign Up</button>
 </form>

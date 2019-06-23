@@ -3,5 +3,7 @@ export class User {
   _userName: string;
   _email: string;
   _password:string;
-  _phone:number;
+  _phone:string;
+  imagePath:string
+
 }

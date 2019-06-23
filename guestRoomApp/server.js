@@ -1,4 +1,4 @@
-const app = require("./app");
+const app = require("./back-end/app");
 const debug = require("debug")("node-angular");
 const http = require("http");
 
@@ -49,4 +49,6 @@ app.set("port", port);
 const server = http.createServer(app);
 server.on("error", onError);
 server.on("listening", onListening);
-server.listen(port);
+server.listen(port,()=>{
+  console.log(`server runs on port ${port}`)
+});

@@ -1,16 +1,39 @@
 <div id="home-page-container"></div>
-
 <div class="home-menu">
   <div class="welcome-title">
     Welcome to Guest Room
   </div>
-  <div class="sub-welcome-title">
-    Check our Guest Rooms
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <div class="main-div__items" *ngIf="!isLoading && rooms.length">
+    <mat-card *ngFor="let room of rooms" class="main-card__item">
+      <mat-card-header>
+        <div mat-card-avatar></div>
+        <mat-card-title>{{ room.roomName }}</mat-card-title>
+        <mat-card-subtitle>{{ room.roomPrice }}</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        style="height: 100px;"
+        mat-card-image
+        [src]="room.roomImage"
+        [alt]="room.roomName"
+      />
+      <mat-card-content>
+        <p>
+          {{ room.roomDescription }}
+        </p>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card-content>
+    </mat-card>
   </div>
-  <div class="rooms-container" *ngFor="let image of _homeImages">
-    <div class="room-container">
-      <div class="room-name">{{ image.name }}</div>
-      <div><img class="room-type-image" src="{{ image.src }}" /></div>
-    </div>
+  <div class="paginator-div">
+    <mat-paginator
+      [length]="totalRooms"
+      [pageSize]="roomsPerPage"
+      (page)="onChangePage($event)"
+    >
+    </mat-paginator>
   </div>
 </div>
